@@ -28,7 +28,8 @@ const projects = [
   {
     title: "Modern Weather App",
     category: "React + API",
-    image: "https://images.unsplash.com/photo-1592210454132-328629a9e546?w=800&q=80",
+    // 👇 Fixed Image: Nayi weather image lagayi hai
+    image: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&q=80",
     tags: ["React", "Tailwind", "OpenWeatherMap", "Axios"],
     link: "https://weather-app-umber-alpha-72.vercel.app/",
   },
@@ -38,6 +39,15 @@ const projects = [
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
     tags: ["React", "Firebase", "Tailwind", "EmailJS"],
     link: "https://vendixo.vercel.app/", 
+  },
+  {
+    // 👇 NEW PROJECT: TradePro yahan add kiya hai
+    title: "TradePro Trading",
+    category: "Full Stack FinTech",
+    // Placeholder image stock market ki hai, baad mein screenshot laga lena
+    image: "https://images.unsplash.com/photo-1611974765270-ca1258634369?w=800&q=80", 
+    tags: ["Next.js", "Supabase", "Finnhub API", "Tailwind"],
+    link: "https://trade-pro-seven.vercel.app/",
   },
   {
     title: "Crypto Dashboard",
@@ -58,13 +68,6 @@ const projects = [
     category: "Productivity",
     image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
     tags: ["React", "LocalStorage", "Framer Motion"],
-    link: "#",
-  },
-  {
-    title: "Travel Landing Page",
-    category: "Frontend",
-    image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80",
-    tags: ["HTML", "CSS", "GSAP Animations"],
     link: "#",
   },
 ];
@@ -296,7 +299,6 @@ export default function App() {
                 <div className="relative h-64 overflow-hidden">
                   <div className="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center gap-4">
                     
-                    {/* 👇👇👇 YAHAN CHANGE KIYA HAI - BUTTON KO 'A' TAG BANA DIYA 👇👇👇 */}
                     <a 
                       href={project.link}
                       target="_blank"
