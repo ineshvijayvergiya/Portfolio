@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Code2, Palette, Layers, Github, Linkedin, Mail, ExternalLink, 
-  Menu, X, Database, ChevronDown, ChevronUp 
+  Menu, X, Database, ChevronDown, ChevronUp, Info, Globe
 } from "lucide-react";
 
 // --- Data Section ---
@@ -26,28 +26,31 @@ const services = [
 
 const projects = [
   {
-    title: "Modern Weather App",
-    category: "React + API",
-    // 👇 Fixed Image: Nayi weather image lagayi hai
-    image: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800&q=80",
-    tags: ["React", "Tailwind", "OpenWeatherMap", "Axios"],
-    link: "https://weather-app-umber-alpha-72.vercel.app/",
-  },
-  {
-    title: "Vendixo E-Commerce",
-    category: "MERN Stack",
-    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&q=80",
-    tags: ["React", "Firebase", "Tailwind", "EmailJS"],
-    link: "https://vendixo.vercel.app/", 
-  },
-  {
-    // 👇 NEW PROJECT: TradePro yahan add kiya hai
-    title: "TradePro Trading",
-    category: "Full Stack FinTech",
-    // Placeholder image stock market ki hai, baad mein screenshot laga lena
-    image: "https://images.unsplash.com/photo-1611974765270-ca1258634369?w=800&q=80", 
+    title: "TradePro Simulator",
+    category: "FinTech App",
+    image: "TradePro-app.png",
     tags: ["Next.js", "Supabase", "Finnhub API", "Tailwind"],
     link: "https://trade-pro-seven.vercel.app/",
+    github: "https://github.com/ineshvijayvergiya/TradePro", 
+    description: "A comprehensive financial technology application engineered to bridge the gap between theoretical market knowledge and practical application. The platform offers a gamified 'Paper Trading' experience, allowing users to execute trades using real-time market data derived from the Finnhub API. Features include a virtual trading engine with ₹10 Lakh capital, dynamic portfolio tracking, and secure authentication via Supabase."
+  },
+  {
+    title: "Vendixo Marketplace",
+    category: "E-Commerce",
+    image: "Vendixo-app.png",
+    tags: ["React", "Firebase", "Tailwind", "EmailJS"],
+    link: "https://vendixo.vercel.app/", 
+    github: "https://github.com/ineshvijayvergiya/Vendixo",
+    description: "A scalable e-commerce platform engineered with React and Firebase. Features a high-performance product filter using custom hooks, real-time cart state management, and seamless checkout flows. Integrated EmailJS for automated transactional emails and order confirmations, ensuring a complete user lifecycle from browse to buy."
+  },
+  {
+    title: "GeoMeteo Weather",
+    category: "Data Visualization",
+    image: "weather-app.png",
+    tags: ["React", "Tailwind", "OpenWeatherMap", "Axios"],
+    link: "https://weather-app-umber-alpha-72.vercel.app/",
+    github: "https://github.com/ineshvijayvergiya/weather--app",
+    description: "A location-intelligence dashboard that visualizes complex meteorological data. Integrates the OpenWeatherMap API via Axios to render live forecasts with sub-second latency. Implemented dynamic UI updates based on atmospheric conditions using Tailwind CSS, demonstrating proficiency in handling asynchronous state and third-party data integration."
   },
   {
     title: "Crypto Dashboard",
@@ -55,6 +58,8 @@ const projects = [
     image: "https://images.unsplash.com/photo-1621504450168-38718b958897?w=800&q=80",
     tags: ["Figma", "React", "Tailwind"],
     link: "#",
+    github: "#",
+    description: "A high-fidelity UI/UX prototype for a cryptocurrency exchange platform. Focuses on data visualization, user-centric navigation, and dark mode aesthetics tailored for financial traders."
   },
   {
     title: "AI Image Generator",
@@ -62,6 +67,8 @@ const projects = [
     image: "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=800&q=80",
     tags: ["OpenAI API", "React", "Express"],
     link: "#",
+    github: "#",
+    description: "An AI-powered application that leverages the OpenAI DALL-E API to generate unique images based on user prompts. Demonstrates ability to handle API keys securely and manage complex backend requests."
   },
   {
     title: "Task Master Pro",
@@ -69,15 +76,21 @@ const projects = [
     image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
     tags: ["React", "LocalStorage", "Framer Motion"],
     link: "#",
-  },
+    github: "#",
+    description: "A robust task management application featuring drag-and-drop functionality, local storage persistence, and smooth animations powered by Framer Motion."
+  }
 ];
 
+// "No Percentages" Skill List
 const skills = [
-  { name: "React.js / Next.js", level: "95%" },
-  { name: "Node.js / Express", level: "85%" },
-  { name: "MongoDB / SQL", level: "80%" },
-  { name: "UI/UX (Figma)", level: "90%" },
-  { name: "Tailwind CSS", level: "98%" },
+  "React.js / Next.js",
+  "Node.js / Express",
+  "MongoDB / SQL",
+  "UI/UX (Figma)",
+  "Tailwind CSS",
+  "Supabase / Firebase",
+  "Git / GitHub",
+  "Redux Toolkit"
 ];
 
 // --- Components ---
@@ -97,12 +110,12 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-slate-900/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+        scrolled ? "bg-slate-900/90 backdrop-blur-md border-b border-white/10" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-          DEV<span className="text-white">PORTFOLIO</span>
+        <h1 className="text-2xl font-bold text-white tracking-tight">
+          INESH<span className="text-cyan-400">.DEV</span>
         </h1>
 
         <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
@@ -148,6 +161,7 @@ const Navbar = () => {
 // --- Main App Component ---
 export default function App() {
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
     <div className="bg-slate-950 min-h-screen text-slate-200 font-sans selection:bg-cyan-500/30">
@@ -155,7 +169,7 @@ export default function App() {
 
       {/* Hero Section */}
       <section id="home" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/30 rounded-full blur-[100px]" />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-600/20 rounded-full blur-[100px]" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-600/20 rounded-full blur-[100px]" />
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -166,19 +180,19 @@ export default function App() {
           >
             <h2 className="text-xl md:text-2xl font-medium text-cyan-400 mb-4">Hello, I'm Inesh 👋</h2>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
-              Creative Designer & <br />
+              Building Digital <br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                MERN Developer
+                Experiences
               </span>
             </h1>
             <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              I bridge the gap between abstract design and robust engineering. 
-              Building pixel-perfect web experiences with modern tech.
+              Full Stack MERN Developer focused on building robust, scalable, and pixel-perfect applications. 
+              Bridging the gap between design and engineering.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#projects" className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-bold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/25">
-                View Work
+                View My Work
               </a>
               <a href="#contact" className="px-8 py-3 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 transition-all transform hover:scale-105">
                 Contact Me
@@ -198,10 +212,10 @@ export default function App() {
             className="space-y-6"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white">About Me</h2>
-            <p className="text-slate-400 leading-relaxed">
-              I'm a passionate freelancer who loves blending code with creativity. 
-              Whether it's designing a sleek logo or architecting a complex database, 
-              I enjoy the entire process. Available for freelance projects and full-time roles.
+            <p className="text-slate-400 leading-relaxed text-lg">
+              I'm not just a coder; I'm a product-focused developer. I love taking complex problems and turning them into simple, elegant interface designs. 
+              <br /><br />
+              With a strong foundation in the MERN stack and Next.js, I build applications that are not only visually stunning but also performant and scalable under the hood.
             </p>
             
             <div className="grid grid-cols-2 gap-4 pt-4">
@@ -213,7 +227,7 @@ export default function App() {
               <div className="p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
                 <Palette className="text-purple-400 mb-2" />
                 <h4 className="font-bold text-white">Design</h4>
-                <p className="text-sm text-slate-500">Figma, Photoshop</p>
+                <p className="text-sm text-slate-500">Figma, Modern UI</p>
               </div>
             </div>
           </motion.div>
@@ -224,23 +238,14 @@ export default function App() {
             viewport={{ once: true }}
             className="space-y-6 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-md"
           >
-            <h3 className="text-xl font-bold text-white mb-4">Technical Proficiency</h3>
-            {skills.map((skill) => (
-              <div key={skill.name}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-slate-300">{skill.name}</span>
-                  <span className="text-cyan-400">{skill.level}</span>
+            <h3 className="text-xl font-bold text-white mb-6">Tech Stack</h3>
+            <div className="flex flex-wrap gap-3">
+              {skills.map((skill, index) => (
+                <div key={index} className="px-4 py-2 bg-slate-800 rounded-lg border border-white/5 text-slate-300 hover:text-cyan-400 hover:border-cyan-400/30 transition-colors cursor-default">
+                  {skill}
                 </div>
-                <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                  <motion.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: skill.level }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="h-full bg-gradient-to-r from-cyan-400 to-purple-500"
-                  />
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -254,8 +259,8 @@ export default function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">My Services</h2>
-            <p className="text-slate-400">High-quality solutions for your digital needs.</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">What I Do</h2>
+            <p className="text-slate-400">Delivering high-quality digital solutions.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -294,38 +299,53 @@ export default function App() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -5 }}
-                className="group relative rounded-2xl overflow-hidden bg-slate-800 border border-white/10"
+                className="group relative rounded-2xl overflow-hidden bg-slate-800 border border-white/10 flex flex-col"
               >
-                <div className="relative h-64 overflow-hidden">
-                  <div className="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center justify-center gap-4">
-                    
-                    <a 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-cyan-500 rounded-full text-slate-900 hover:bg-cyan-400 transition-colors transform hover:scale-110 cursor-pointer"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-
-                    <button className="p-3 bg-slate-700 rounded-full text-white hover:bg-white hover:text-slate-900 transition-colors transform hover:scale-110">
-                      <Github size={20} />
-                    </button>
-                  </div>
+                <div className="relative h-56 overflow-hidden">
+                  <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-slate-900/20 transition-colors z-10" />
                   <img 
                     src={project.image} 
                     alt={project.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+                  <div className="absolute top-4 right-4 z-20 flex gap-2">
+                     <button 
+                       onClick={() => setSelectedProject(project)}
+                       className="p-2 bg-slate-900/80 backdrop-blur text-white rounded-full hover:bg-cyan-500 hover:text-slate-900 transition-colors"
+                       title="View Details"
+                     >
+                       <Info size={18} />
+                     </button>
+                  </div>
                 </div>
 
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   <span className="text-xs font-bold text-cyan-400 uppercase tracking-wider">{project.category}</span>
-                  <h3 className="text-xl font-bold text-white mt-2 mb-3 group-hover:text-cyan-400 transition-colors">{project.title}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-xs bg-white/10 text-slate-300 px-3 py-1 rounded-full">{tag}</span>
+                  <h3 className="text-xl font-bold text-white mt-2 mb-3">{project.title}</h3>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.slice(0,3).map(tag => (
+                      <span key={tag} className="text-xs bg-white/5 text-slate-300 px-3 py-1 rounded-full border border-white/5">{tag}</span>
                     ))}
+                  </div>
+
+                  <div className="mt-auto flex gap-3">
+                    <button 
+                      onClick={() => setSelectedProject(project)}
+                      className="flex-1 py-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium text-white transition-colors"
+                    >
+                      Read More
+                    </button>
+                    {project.link !== "#" && (
+                      <a 
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/20 transition-colors"
+                      >
+                         <ExternalLink size={20} />
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -399,8 +419,83 @@ export default function App() {
       </section>
       
       <footer className="py-8 text-center border-t border-white/5 text-slate-600 text-sm">
-        <p>© 2026 Inesh. All rights reserved.</p>
+        <p>© 2026 Inesh.dev. All rights reserved.</p>
       </footer>
+
+      {/* PROJECT DETAILS MODAL */}
+      <AnimatePresence>
+        {selectedProject && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
+            />
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }} 
+              animate={{ scale: 1, opacity: 1 }} 
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative bg-slate-900 border border-white/10 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto no-scrollbar shadow-2xl shadow-cyan-500/10"
+            >
+              <button 
+                onClick={() => setSelectedProject(null)}
+                className="absolute top-4 right-4 p-2 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors z-10"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="h-64 relative">
+                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
+              </div>
+
+              <div className="p-8">
+                <span className="text-cyan-400 font-bold tracking-wider text-sm uppercase">{selectedProject.category}</span>
+                <h2 className="text-3xl font-bold text-white mt-2 mb-4">{selectedProject.title}</h2>
+                
+                <p className="text-slate-300 leading-relaxed mb-6">
+                  {selectedProject.description || "No description available."}
+                </p>
+
+                <div className="mb-8">
+                  <h4 className="text-white font-semibold mb-3">Tech Stack used:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map(tag => (
+                       <span key={tag} className="px-3 py-1 bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 rounded-full text-sm">
+                         {tag}
+                       </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-4">
+                  {selectedProject.link !== "#" && (
+                    <a 
+                      href={selectedProject.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <Globe size={18} /> View Live Demo
+                    </a>
+                  )}
+                  <a 
+                    href={selectedProject.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-white/5 hover:bg-white/10 text-white font-bold py-3 px-6 rounded-xl border border-white/10 flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <Github size={18} /> View Code
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }

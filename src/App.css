@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+@layer utilities {
+  /* Chrome, Safari aur Opera ke liye */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* IE, Edge aur Firefox ke liye */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
