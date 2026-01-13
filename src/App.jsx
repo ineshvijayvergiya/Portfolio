@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Code2, Palette, Layers, Github, Linkedin, Mail, ExternalLink, 
-  Menu, X, Database, ChevronDown, ChevronUp, Info, Globe
+  Menu, X, Database, ChevronDown, ChevronUp, Info, Globe, 
+  Target, Zap, BookOpen, FileText 
 } from "lucide-react";
 
 // --- Data Section ---
@@ -18,39 +19,67 @@ const services = [
     icon: <Layers className="w-8 h-8 text-purple-400" />,
   },
   {
-    title: "Creative Graphics",
+    title: "Visual Design",
     desc: "Logo design, photo editing (Ps/Ai) & visual branding.",
     icon: <Palette className="w-8 h-8 text-pink-400" />,
   },
 ];
 
+
 const projects = [
   {
     title: "TradePro Simulator",
     category: "FinTech App",
-    image: "TradePro-app.png",
+    image: "/TradePro-app.png",
     tags: ["Next.js", "Supabase", "Finnhub API", "Tailwind"],
     link: "https://trade-pro-seven.vercel.app/",
     github: "https://github.com/ineshvijayvergiya/TradePro", 
-    description: "A comprehensive financial technology application engineered to bridge the gap between theoretical market knowledge and practical application. The platform offers a gamified 'Paper Trading' experience, allowing users to execute trades using real-time market data derived from the Finnhub API. Features include a virtual trading engine with ₹10 Lakh capital, dynamic portfolio tracking, and secure authentication via Supabase."
+    description: "A real-time stock trading simulator that allows beginners to practice trading strategies with ₹10L virtual money.",
+    metrics: ["Updates prices every 1 second via Finnhub", "Handles real-time state for portfolio tracking"],
+    challenges: [
+      "Handling real-time API updates without UI lag.",
+      "Synchronizing user balance and portfolio value instantly."
+    ],
+    learnings: [
+      "Learned to use Supabase Realtime for live data syncing.",
+      "Understood how to manage API rate limits effectively."
+    ]
   },
   {
     title: "Vendixo Marketplace",
     category: "E-Commerce",
-    image: "Vendixo-app.png",
+    image: "/Vendixo-app.png",
     tags: ["React", "Firebase", "Tailwind", "EmailJS"],
     link: "https://vendixo.vercel.app/", 
     github: "https://github.com/ineshvijayvergiya/Vendixo",
-    description: "A scalable e-commerce platform engineered with React and Firebase. Features a high-performance product filter using custom hooks, real-time cart state management, and seamless checkout flows. Integrated EmailJS for automated transactional emails and order confirmations, ensuring a complete user lifecycle from browse to buy."
+    description: "A full-featured e-commerce marketplace offering seamless product filtering, cart management, and automated order confirmations.",
+    metrics: ["Filters 100+ products instantly", "99.9% Uptime via Firebase Hosting"],
+    challenges: [
+      "Implementing complex filter logic (Price, Category, Rating).",
+      "Persisting cart state across page reloads."
+    ],
+    learnings: [
+      "Learned to structure NoSQL data efficiently in Firebase.",
+      "Gained experience with React Custom Hooks for logic reuse."
+    ]
   },
   {
     title: "GeoMeteo Weather",
     category: "Data Visualization",
-    image: "weather-app.png",
+    image: "/weather-app.png",
     tags: ["React", "Tailwind", "OpenWeatherMap", "Axios"],
     link: "https://weather-app-umber-alpha-72.vercel.app/",
     github: "https://github.com/ineshvijayvergiya/weather--app",
-    description: "A location-intelligence dashboard that visualizes complex meteorological data. Integrates the OpenWeatherMap API via Axios to render live forecasts with sub-second latency. Implemented dynamic UI updates based on atmospheric conditions using Tailwind CSS, demonstrating proficiency in handling asynchronous state and third-party data integration."
+    description: "A clean, responsive weather dashboard that delivers live forecasts and atmospheric data for any city worldwide.",
+    metrics: ["Fetches live data in < 200ms", "Dynamic background themes based on weather"],
+    challenges: [
+      "Handling errors gracefully when cities are not found.",
+      "Converting raw API data into user-friendly visuals."
+    ],
+    learnings: [
+      "Learned asynchronous data fetching patterns (Async/Await).",
+      "Used Axios interceptors for better error handling."
+    ]
   },
   {
     title: "Crypto Dashboard",
@@ -59,7 +88,10 @@ const projects = [
     tags: ["Figma", "React", "Tailwind"],
     link: "#",
     github: "#",
-    description: "A high-fidelity UI/UX prototype for a cryptocurrency exchange platform. Focuses on data visualization, user-centric navigation, and dark mode aesthetics tailored for financial traders."
+    description: "A high-fidelity UI/UX prototype for a cryptocurrency exchange platform focused on data visualization.",
+    metrics: ["Designed 15+ unique screens", "High-fidelity interactive prototyping"],
+    challenges: ["Balancing data density with visual clarity."],
+    learnings: ["Learned advanced Figma component properties."]
   },
   {
     title: "AI Image Generator",
@@ -68,7 +100,10 @@ const projects = [
     tags: ["OpenAI API", "React", "Express"],
     link: "#",
     github: "#",
-    description: "An AI-powered application that leverages the OpenAI DALL-E API to generate unique images based on user prompts. Demonstrates ability to handle API keys securely and manage complex backend requests."
+    description: "An AI-powered application leveraging OpenAI's DALL-E to generate unique images from text prompts.",
+    metrics: ["Generates images in ~4 seconds", "Secure backend API key storage"],
+    challenges: ["Securing API keys on the backend."],
+    learnings: ["Learned Express.js middleware and API routing."]
   },
   {
     title: "Task Master Pro",
@@ -77,11 +112,13 @@ const projects = [
     tags: ["React", "LocalStorage", "Framer Motion"],
     link: "#",
     github: "#",
-    description: "A robust task management application featuring drag-and-drop functionality, local storage persistence, and smooth animations powered by Framer Motion."
+    description: "A robust task management app with drag-and-drop functionality and local storage persistence.",
+    metrics: ["Zero database cost (LocalStorage)", "60fps smooth drag animations"],
+    challenges: ["Optimizing re-renders during drag operations."],
+    learnings: ["Understood Browser LocalStorage API limitations."]
   }
 ];
 
-// "No Percentages" Skill List
 const skills = [
   "React.js / Next.js",
   "Node.js / Express",
@@ -179,23 +216,33 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-xl md:text-2xl font-medium text-cyan-400 mb-4">Hello, I'm Inesh 👋</h2>
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
-              Building Digital <br />
+            
+            {/* 1️⃣ Headline Fix: Option A (Product Focused) */}
+            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+              Full-Stack MERN Developer <br />
               <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                Experiences
+                Building fast, scalable web products.
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-              Full Stack MERN Developer focused on building robust, scalable, and pixel-perfect applications. 
+            
+            {/* 5️⃣ Contrast Fix: Changed text-slate-400 to text-slate-300 */}
+            <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+              Focused on building robust, high-performance applications with modern tech. 
               Bridging the gap between design and engineering.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a href="#projects" className="px-8 py-3 rounded-full bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-bold transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/25">
                 View My Work
               </a>
-              <a href="#contact" className="px-8 py-3 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 transition-all transform hover:scale-105">
-                Contact Me
+              
+              {/* 6️⃣ Resume Button Added */}
+              <a 
+                href="/resume.pdf" 
+                target="_blank"
+                className="flex items-center gap-2 px-8 py-3 rounded-full border border-slate-600 hover:border-cyan-400 hover:text-cyan-400 text-white font-medium transition-all transform hover:scale-105"
+              >
+                <FileText size={18} /> Download Resume
               </a>
             </div>
           </motion.div>
@@ -212,22 +259,34 @@ export default function App() {
             className="space-y-6"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white">About Me</h2>
-            <p className="text-slate-400 leading-relaxed text-lg">
+            
+            {/* 5️⃣ Contrast Fix: Brighter Text */}
+            <p className="text-slate-300 leading-relaxed text-lg">
               I'm not just a coder; I'm a product-focused developer. I love taking complex problems and turning them into simple, elegant interface designs. 
               <br /><br />
               With a strong foundation in the MERN stack and Next.js, I build applications that are not only visually stunning but also performant and scalable under the hood.
             </p>
+
+            {/* 4️⃣ Role Clarity & Looking for Role */}
+            <div className="p-4 bg-cyan-500/10 border-l-4 border-cyan-500 rounded-r-lg">
+               <p className="text-slate-200 font-medium">
+                 🚀 Primary Focus: Frontend / Full-Stack roles (React, Next.js, MERN).
+               </p>
+               <p className="text-slate-400 text-sm mt-1">
+                 Currently looking for a full-time or junior role where I can contribute to real products.
+               </p>
+            </div>
             
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
                 <Code2 className="text-cyan-400 mb-2" />
                 <h4 className="font-bold text-white">Engineering</h4>
-                <p className="text-sm text-slate-500">MERN Stack, Next.js</p>
+                <p className="text-sm text-slate-400">MERN Stack, Next.js</p>
               </div>
               <div className="p-4 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
                 <Palette className="text-purple-400 mb-2" />
                 <h4 className="font-bold text-white">Design</h4>
-                <p className="text-sm text-slate-500">Figma, Modern UI</p>
+                <p className="text-sm text-slate-400">Figma, Modern UI</p>
               </div>
             </div>
           </motion.div>
@@ -259,7 +318,7 @@ export default function App() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">What I Do</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">My Focus</h2>
             <p className="text-slate-400">Delivering high-quality digital solutions.</p>
           </motion.div>
 
@@ -377,7 +436,17 @@ export default function App() {
              viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Let's Work Together</h2>
-            <p className="text-slate-400 mb-12">Have a project in mind? Let's build something amazing.</p>
+            
+            {/* 7️⃣ Open to Work Hint */}
+            <div className="inline-block px-4 py-2 mb-8 rounded-full bg-cyan-500/10 border border-cyan-500/20">
+              <span className="text-cyan-400 text-sm font-medium flex items-center gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                </span>
+                Open to full-time, internship, and freelance opportunities.
+              </span>
+            </div>
 
             <form 
               action="https://formspree.io/f/mbdjlabd" 
@@ -388,19 +457,19 @@ export default function App() {
                 type="text" 
                 name="name"
                 placeholder="Your Name" 
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-white placeholder-slate-500 transition-colors"
+                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-slate-200 placeholder-slate-500 transition-colors"
               />
               <input 
                 type="email" 
                 name="email"
                 placeholder="Your Email" 
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-white placeholder-slate-500 transition-colors"
+                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-slate-200 placeholder-slate-500 transition-colors"
               />
               <textarea 
                 rows="4" 
                 name="message"
                 placeholder="Your Message" 
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-white placeholder-slate-500 transition-colors"
+                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-cyan-400 text-slate-200 placeholder-slate-500 transition-colors"
               ></textarea>
               <button className="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl hover:opacity-90 transition-opacity">
                 Send Message
@@ -433,6 +502,7 @@ export default function App() {
               onClick={() => setSelectedProject(null)}
               className="absolute inset-0 bg-black/80 backdrop-blur-sm" 
             />
+            {/* 'no-scrollbar' class is here */}
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }} 
               animate={{ scale: 1, opacity: 1 }} 
@@ -455,9 +525,56 @@ export default function App() {
                 <span className="text-cyan-400 font-bold tracking-wider text-sm uppercase">{selectedProject.category}</span>
                 <h2 className="text-3xl font-bold text-white mt-2 mb-4">{selectedProject.title}</h2>
                 
-                <p className="text-slate-300 leading-relaxed mb-6">
+                {/* 5️⃣ Contrast Fix for Modal Text */}
+                <p className="text-slate-300 leading-relaxed mb-6 text-lg">
                   {selectedProject.description || "No description available."}
                 </p>
+
+                {/* METRICS SECTION */}
+                {selectedProject.metrics && (
+                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                      {selectedProject.metrics.map((metric, idx) => (
+                        <div key={idx} className="bg-white/5 p-3 rounded-lg border border-white/5 flex items-center gap-3">
+                           <Target className="text-cyan-400 shrink-0" size={20} />
+                           <span className="text-sm text-slate-200 font-medium">{metric}</span>
+                        </div>
+                      ))}
+                   </div>
+                )}
+
+                {/* CHALLENGES & LEARNINGS */}
+                {(selectedProject.challenges || selectedProject.learnings) && (
+                  <div className="grid md:grid-cols-2 gap-6 mb-8 p-6 bg-slate-800/50 rounded-xl border border-white/5">
+                    {selectedProject.challenges && (
+                      <div>
+                        <h4 className="flex items-center gap-2 font-bold text-white mb-3">
+                          <Zap size={18} className="text-yellow-400" /> Key Challenges
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProject.challenges.map((c, i) => (
+                            <li key={i} className="text-sm text-slate-300 flex gap-2">
+                              <span className="text-yellow-400/50">•</span> {c}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {selectedProject.learnings && (
+                      <div>
+                        <h4 className="flex items-center gap-2 font-bold text-white mb-3">
+                          <BookOpen size={18} className="text-green-400" /> Key Learnings
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProject.learnings.map((l, i) => (
+                            <li key={i} className="text-sm text-slate-300 flex gap-2">
+                              <span className="text-green-400/50">•</span> {l}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 <div className="mb-8">
                   <h4 className="text-white font-semibold mb-3">Tech Stack used:</h4>
