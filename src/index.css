@@ -1,15 +1,220 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer utilities {
-  /* Chrome, Safari aur Opera ke liye */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
 
-  /* IE, Edge aur Firefox ke liye */
-  .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+:root {
+  --cyber-cyan: #00ffff;
+  --cyber-magenta: #ff00ff;
+  --cyber-yellow: #ffff00;
+  --cyber-green: #00ff88;
+  --cyber-red: #ff0044;
+  --cyber-dark: #050510;
+  --cyber-panel: #0a0a1a;
+  --cyber-border: #1a1a3e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cyber-dark);
+  color: #e0e0ff;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: var(--cyber-cyan); }
+::-webkit-scrollbar-thumb:hover { background: var(--cyber-magenta); }
+
+/* Glitch animation */
+@keyframes glitch {
+  0% { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
+  20% { clip-path: inset(60% 0 5% 0); transform: translate(4px, 0); }
+  40% { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 0); }
+  60% { clip-path: inset(80% 0 2% 0); transform: translate(2px, 0); }
+  80% { clip-path: inset(5% 0 80% 0); transform: translate(-4px, 0); }
+  100% { clip-path: inset(20% 0 60% 0); transform: translate(0, 0); }
+}
+
+@keyframes glitch-main {
+  0%, 89%, 100% { opacity: 1; transform: none; text-shadow: 0 0 20px var(--cyber-cyan); }
+  90% { transform: skewX(-8deg); }
+  92% { transform: skewX(8deg); text-shadow: 4px 0 var(--cyber-magenta), -4px 0 var(--cyber-cyan); }
+  94% { transform: skewX(0); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes xp-fill {
+  0% { width: 0%; }
+  100% { width: var(--xp-width); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes boot-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.4; }
+}
+
+@keyframes speed-line {
+  0% { transform: translateX(-200%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes node-unlock {
+  0% { transform: scale(0) rotate(180deg); opacity: 0; }
+  60% { transform: scale(1.3) rotate(-10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes cursor-trail {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+@keyframes hud-border-flow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* Utility classes */
+.font-orbitron { font-family: 'Orbitron', monospace; }
+.font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+
+.text-glow-cyan { text-shadow: 0 0 10px var(--cyber-cyan), 0 0 20px var(--cyber-cyan); }
+.text-glow-magenta { text-shadow: 0 0 10px var(--cyber-magenta), 0 0 20px var(--cyber-magenta); }
+.text-glow-yellow { text-shadow: 0 0 10px var(--cyber-yellow), 0 0 20px var(--cyber-yellow); }
+
+.border-glow-cyan { box-shadow: 0 0 10px var(--cyber-cyan), inset 0 0 10px rgba(0,255,255,0.05); }
+.border-glow-magenta { box-shadow: 0 0 10px var(--cyber-magenta), inset 0 0 10px rgba(255,0,255,0.05); }
+
+.glitch-text {
+  animation: glitch-main 4s ease-in-out infinite;
+}
+
+.hud-panel {
+  background: rgba(10, 10, 26, 0.85);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+
+.hud-panel::before,
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--cyber-cyan);
+  border-style: solid;
+}
+
+.hud-panel::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+
+.hud-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+.scanline-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+
+html { font-size: 16px; }
+@media (max-width: 640px) { html { font-size: 15px; } }
+
+/* Font shorthands (ensure Orbitron + JetBrains Mono loaded in index.html) */
+.font-orbitron  { font-family: 'Orbitron', monospace; }
+.font-jetbrains { font-family: 'JetBrains Mono', monospace; }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Hide scrollbar on mobile filter tabs */
+.overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
+.overflow-x-auto::-webkit-scrollbar { display: none; }
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  button { min-height: 36px; }
+  a      { min-height: 36px; display: inline-flex; align-items: center; }
+}
+
+/* Prevent horizontal overflow on mobile */
+body   { overflow-x: hidden; }
+main   { overflow-x: hidden; }
+
+/* ── Three.js canvas responsive fix ──────────────────────────────── */
+canvas { max-width: 100%; display: block; }
+
+/* ── Archive card hover (used by ProjectArchive) ─────────────────── */
+/* Already defined inline in ProjectArchive — kept here as fallback */
+
+/* ── Reduce motion for users who prefer it ───────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
+
