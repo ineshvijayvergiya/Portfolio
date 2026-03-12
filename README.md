@@ -1,134 +1,293 @@
-# INESH.DEV — Cyberpunk RPG Portfolio v2.0
+# INESH.DEV — Cyberpunk RPG Developer Portfolio
 
-A fully immersive cyberpunk developer portfolio built as a playable RPG-style interface.
+A fully immersive **cyberpunk-themed developer portfolio** designed as a **playable RPG interface**.
 
-## Stack
+Instead of a traditional portfolio website, this project transforms the developer experience into an **interactive game-like environment** featuring a boot sequence, skill trees, orbiting project planets, and a command-line AI terminal.
 
-- **React 18** + **Vite** — Fast dev server, HMR
-- **TailwindCSS** — Utility styling + custom cyber theme
-- **Framer Motion** — Cinematic scroll animations, transitions
-- **Three.js** — 3D hologram, orbiting planet system
-- **JetBrains Mono** + **Orbitron** — Fonts
+The goal is to showcase projects and skills through **gamified UI, cinematic animations, and immersive visual effects**.
 
 ---
 
-## Project Structure
+# Live Experience
+
+Enter the cyberpunk interface and explore the developer system.
+
+Boot System → Explore Skill Tree → Discover Projects → Use Terminal
+
+This portfolio behaves like a **developer operating system** where visitors can interact with different modules.
+
+---
+
+# Tech Stack
+
+## Core
+
+- React 18 — Component architecture
+- Vite — Lightning-fast build tool
+- TailwindCSS — Utility-first styling system
+
+## Animation & Visual Effects
+
+- Framer Motion — Scroll-based cinematic animations
+- Three.js — 3D holographic visuals and orbital systems
+- Custom Canvas Effects — Particle systems and neon overlays
+
+## Typography
+
+- JetBrains Mono — Terminal-style developer font
+- Orbitron — Futuristic cyberpunk headings
+
+---
+
+# Key Features
+
+## Boot System Interface
+
+A cinematic startup sequence inspired by futuristic operating systems.
+
+Features:
+
+- Animated character loader
+- Typewriter boot logs
+- Color-coded system messages
+- Animated loading progress bar
+- Smooth transition into main interface
+
+---
+
+## Hero Section — Developer Profile
+
+The landing module presents the developer identity through a **3D holographic interface**.
+
+Includes:
+
+- Three.js hologram orb
+- Orbiting nodes and rings
+- GitHub XP level system
+- Animated developer statistics
+
+Displayed stats include:
+
+- Commits
+- Projects
+- Stars
+- Followers
+- Experience Level
+
+Skill attributes are represented through animated XP bars.
+
+---
+
+## Project Planet System
+
+Projects are visualized as **orbiting planets in a solar system**.
+
+Each planet represents a project and includes:
+
+- Unique orbit radius and speed
+- Neon color themes
+- Rotation animation
+- Hover detection via raycasting
+- Click interaction to open project details
+
+Project modals display:
+
+- Description
+- Tech stack
+- GitHub links
+- XP reward system
+
+---
+
+## Interactive Skill Tree
+
+Inspired by RPG skill progression systems.
+
+Features:
+
+- Node-based skill graph
+- Animated connection lines
+- Unlock progression animation
+- Skill information panel
+- XP bars and level indicators
+
+Visitors can explore different development skills visually.
+
+---
+
+## Developer Inventory
+
+A **game-style tool inventory system** representing technologies used by the developer.
+
+Features:
+
+- 16-slot grid inventory
+- Category filtering
+- Item rarity system
+
+Rarity types:
+
+- Legendary
+- Epic
+- Rare
+- Uncommon
+
+Each item includes hover glow effects and detailed descriptions.
+
+---
+
+## AI Terminal Console
+
+An interactive **cyberpunk command-line interface**.
+
+Users can execute commands to explore the portfolio.
+
+Supported commands:
+
+help  
+projects  
+skills  
+email  
+github  
+linkedin  
+hire  
+status  
+whoami  
+clear
+
+Features include:
+
+- Typewriter output animation
+- Arrow key command history
+- Quick command buttons
+- Blinking terminal cursor
+
+---
+
+# Visual Effects System
+
+The portfolio includes multiple real-time effects to create a cyberpunk atmosphere.
+
+Effects include:
+
+- Custom glowing cursor with particle trail
+- Dynamic particle field background
+- CRT scanline overlay
+- Perspective grid background
+- HUD corner decorations
+- Neon glow text
+- Glitch animations
+- Side HUD interface panels
+
+---
+
+# Project Structure
 
 ```
-src/
-├── components/
-│   ├── BootScreen.jsx      # Animated OS boot sequence
-│   ├── NavBar.jsx          # Floating HUD navigation
-│   ├── HeroSection.jsx     # Developer profile + XP system
-│   ├── ProjectPlanets.jsx  # Three.js orbiting project planets
-│   ├── SkillTree.jsx       # Interactive RPG skill tree
-│   ├── Inventory.jsx       # Game-style tool inventory grid
-│   └── Terminal.jsx        # AI cyberpunk command console
-├── effects/
-│   ├── CursorGlow.jsx      # Custom cursor + particle trail
-│   ├── ParticleField.jsx   # Animated background particles
-│   ├── ScanLines.jsx       # CRT scanline overlay
-│   └── HologramCanvas.jsx  # Three.js hologram orb
-├── hooks/
-│   ├── useMouseGlow.js     # Mouse position tracking
-│   └── useScrollReveal.js  # Intersection observer hook
-├── App.jsx                 # Root orchestrator
-├── main.jsx                # Entry point
-└── index.css               # Global styles + keyframes
+src
+├── components
+│   ├── BootScreen.jsx
+│   ├── NavBar.jsx
+│   ├── HeroSection.jsx
+│   ├── ProjectPlanets.jsx
+│   ├── SkillTree.jsx
+│   ├── Inventory.jsx
+│   └── Terminal.jsx
+│
+├── effects
+│   ├── CursorGlow.jsx
+│   ├── ParticleField.jsx
+│   ├── ScanLines.jsx
+│   └── HologramCanvas.jsx
+│
+├── hooks
+│   ├── useMouseGlow.js
+│   └── useScrollReveal.js
+│
+├── App.jsx
+├── main.jsx
+└── index.css
 ```
 
 ---
 
-## Setup
+# Installation
 
-```bash
-# Install dependencies
+Clone the repository:
+
+```
+git clone https://github.com/yourusername/inesh-dev.git
+```
+
+Install dependencies:
+
+```
 npm install
+```
 
-# Start dev server
+Start the development server:
+
+```
 npm run dev
+```
 
-# Build for production
+Build for production:
+
+```
 npm run build
+```
 
-# Preview production build
+Preview the production build:
+
+```
 npm run preview
 ```
 
 ---
 
-## Features
+# Customization Guide
 
-### Boot Screen
-- Animated character loader with frame cycling
-- Horizontal speed lines
-- Typewriter-style system boot log with color-coded output
-- Animated progress bar with shimmer
-- Smooth exit transition into main interface
+To personalize the portfolio, update the following files:
 
-### Hero Section (3D)
-- Three.js holographic orb with orbiting rings and nodes
-- GitHub XP level system with animated fill bar
-- Animated stat counters (commits, projects, stars, followers)
-- Staggered XP bars for skill attributes
-
-### Project Planet System
-- Three.js solar system with 3 orbiting planets
-- Each planet: neon color, slow rotation, unique orbit radius/speed
-- Raycaster-based hover detection + click to open modal
-- Project modal with tech stack, stats, XP reward
-- Planet legend + card grid below canvas
-
-### Interactive Skill Tree
-- SVG connection lines between skill nodes
-- Animated unlock sequence on load
-- Animated dashed lines with dash-flow animation
-- Click any node for detailed skill info panel
-- XP bars, level display, unlock tree
-
-### Developer Inventory
-- 16-item grid with category filtering
-- Rarity system (Legendary / Epic / Rare / Uncommon)
-- Per-item color theming + hover glow
-- Click for detailed item info panel
-
-### AI Terminal
-- Full command console with typed output animation
-- 9 commands: help, projects, skills, email, github, linkedin, hire, status, whoami, clear
-- Arrow key command history navigation
-- Quick-execute buttons
-- Blinking cursor
-
-### Visual Effects
-- Custom cursor with lagged ring + particle trail
-- Animated particle field with connection lines
-- CRT scanline overlay + moving scan beam
-- Perspective grid background
-- HUD corner brackets on all panels
-- Neon glow text effects
-- Glitch text animation on hero name
-- Side HUD decorations
+- `HeroSection.jsx` → Developer info and stats  
+- `ProjectPlanets.jsx` → Project data  
+- `SkillTree.jsx` → Skills and progression tree  
+- `Inventory.jsx` → Tools and technologies  
+- `Terminal.jsx` → Custom terminal commands  
+- `index.css` → Theme colors and animations  
 
 ---
 
-## Customization
+# Performance Optimization
 
-Edit these files to personalize:
+The project is optimized for smooth rendering and minimal performance overhead.
 
-- `src/components/HeroSection.jsx` — Change name, role, stats
-- `src/components/ProjectPlanets.jsx` — Update `PROJECTS` array
-- `src/components/SkillTree.jsx` — Update `SKILLS` array
-- `src/components/Inventory.jsx` — Update `TOOLS` array
-- `src/components/Terminal.jsx` — Update `COMMANDS` object
-- `src/index.css` — CSS variables for color theme
+Optimizations include:
+
+- Proper Three.js renderer disposal
+- Cleanup of event listeners
+- Particle rendering throttling
+- `devicePixelRatio` limited to 2
+- Intersection Observer animations triggered once
+- Animation loops using `requestAnimationFrame`
+- Localized state management to prevent unnecessary re-renders
 
 ---
 
-## Performance Notes
+# Future Improvements
 
-- Three.js renderers are properly disposed on unmount
-- Event listeners cleaned up in all useEffect returns
-- Particle connection lines rendered every other frame
-- `devicePixelRatio` capped at 2
-- Framer Motion uses `whileInView` with `once: true` to avoid re-triggers
-- No unnecessary re-renders (state kept local, refs for animation loops)
+Planned features include:
+
+- AI chatbot assistant
+- Dynamic GitHub project syncing
+- Skill unlock achievements
+- Interactive coding mini-games
+- Advanced developer analytics dashboard
+
+---
+
+# Author
+
+**Inesh**
+
+Cyberpunk developer building immersive web experiences.
