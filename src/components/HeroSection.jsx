@@ -9,7 +9,7 @@ import HologramCanvas from '../effects/HologramCanvas'
 // ── Real, honest developer stats ─────────────────────────────────────────────
 const REAL_STATS = [
   { label: 'REAL COMMITS',       value: 400,    suffix: '+',  color: '#00ffff', icon: '⑂' },
-  { label: 'PROJECTS SHIPPED',   value: 12,     suffix: '',   color: '#ff00ff', icon: '◈' },
+  { label: 'PROJECTS MADE',   value: 12,     suffix: '',   color: '#ff00ff', icon: '◈' },
   { label: 'DESIGN ASSETS',      value: 100,    suffix: '+',  color: '#ffff00', icon: '◎' },
   { label: 'COFFEE CONSUMED',    value: 1200,   suffix: 'ml', color: '#ff8800', icon: '☕' },
 ]
