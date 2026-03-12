@@ -11,7 +11,7 @@ const BOOT_SEQUENCE = [
   { text: '[ PRJ  ] Decrypting mission archives........... OK', delay: 1550 },
   { text: '[ INV  ] Loading developer inventory........... OK', delay: 1750 },
   { text: '[ COM  ] Terminal handshake established........ OK', delay: 1950 },
-  { text: '[ XP   ] Calculating developer level........... LVL 42', delay: 2150 },
+  { text: '[ XP   ] Calculating developer level........... LVL 10', delay: 2150 },
   { text: '[ SYS  ] All systems nominal. Welcome, Commander INESH.', delay: 2400 },
 ]
 
