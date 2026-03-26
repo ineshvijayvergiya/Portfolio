@@ -1,4 +1,3 @@
-// src/App.jsx — v5: fixes warp re-open bug, full responsive layout
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
